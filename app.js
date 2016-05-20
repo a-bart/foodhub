@@ -46,7 +46,7 @@ app.use(parser.json());
 //app.use(stubAuth);
 
 app.use('/api/v1', routes.router);
-app.use(express.static('../frontend/build'));
+app.use(express.static('./frontend/build'));
 app.use(errors.handler);
 
 app.listen(config.serverPort, function() {

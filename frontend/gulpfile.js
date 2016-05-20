@@ -80,7 +80,7 @@ gulp.task('styluslint', function () {
 });
 
 gulp.task('html:build', function() {
-  gulp.src(path.src.html)
+  return gulp.src(path.src.html)
     .pipe(gulp.dest(path.build.html))
     .pipe(reload({
       stream: true
@@ -137,7 +137,9 @@ gulp.task('build', [
   'style:build',
   'image:build'
   // 'lint'
-]);
+], function () {
+  process.exit(0);
+});
 
 gulp.task('watch', function() {
   watch([path.watch.html], function(event, cb) {

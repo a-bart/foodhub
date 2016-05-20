@@ -1,0 +1,62 @@
+{
+  "name": "foodhub",
+  "main": "app.js",
+  "version": "0.9.0",
+  "engines": {
+  "node": "4.4.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "install": "npm install -g sequelize && npm install -g sequelize-cli && npm install -g mysql",
+    "postinstall": "gulp --gulpfile frontend/gulpfile.js build && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "lodash": "^4.11.2",
+    "lodash.assign": "^4.0.8",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-vkontakte": "^0.4.0",
+    "request": "^2.72.0",
+    "sequelize": "^3.21.0",
+    "angular": "^1.5",
+    "angular-resource": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-cookies": "^1.5.5",
+    "autoprefixer": "^6.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.11.2",
+    "browserify": "^13.0.0",
+    "connect-modrewrite": "^0.9.0",
+    "eslint": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^1.1.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylint": "^3.0.0",
+    "gulp-stylus": "^2.3.1",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "imagemin-pngquant": "^4.2.2",
+    "stringify": "^5.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0",
+    "moment": "^2.13.0",
+    "normalize.css": "^4.0.0"
+  },
+  "devDependencies": {
+    "sequelize-auto": "^0.4.4"
+  }
+}
