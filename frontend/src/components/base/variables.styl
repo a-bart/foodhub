@@ -7,14 +7,10 @@ $mobile-max = "only screen and (max-width: 35.5em)" /* <= 568px */
 $mobile = "only screen and (max-width: 35.5em) and (min-width: 20.0625em)" /* 321px -  568px */
 $mobile-sm = "only screen and (max-width: 20em)" /* <= 320px */
 
-
-
-$color_main_dark = #2E3442 // Темно синий
-$color_main_light = #E9993B //Апельсиновый
-$color_primary_bg = #fff
+$color_primary_bg = #f2f2f2
 $color_secondary_bg = #f8f8f8
 $color_session_info_bg = #333
-$color_main = $color_main_light
+$color_main = #4caf50
 $color_main_font = #676767
 $color_session_info_text = #fff
 $color_session_info_label = #999
@@ -34,18 +30,19 @@ $color_vk_button_bg = #4c75a3
 $color_footer_bg = #333
 $color_footer_text = #999
 $footer_height = 40px
-$color_button_primary_hover = darken($color_main_light, 10%)
-$color_button_primary_active = darken($color_main_light, 10%)
+$color_button_primary_hover = #43A047
+$color_button_primary_active = #5ecc62
 $color_food_order_seaprator = #999
 $color_tab_label = #676767
 $color_session_list_title_big = #3e3e3e
 $color_session_list_row_border = #eaeaea
-$header_height = 50px
+$header_height = 60px
 $color_form_text = #222
 $color_form_secondary = #777
 $color_regular_shadow = #000
 $color_header_title = #222
 $color_input_invalid = #ff3636;
+
 
 $border_separator = 1px solid rgba(#000, 0.2)
 
@@ -78,4 +75,4 @@ page_header_title()
   color: $color_header_title
   padding: 30px 20px
   margin: 0
-  border-bottom: 1px solid $color_main
+  border-bottom: $border_separator

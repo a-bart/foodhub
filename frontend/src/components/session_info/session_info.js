@@ -1,5 +1,5 @@
-let _ = require('lodash');
-let moment = require('moment/min/moment-with-locales.js');
+var _ = require('lodash');
+var moment = require('moment/min/moment-with-locales.js');
 
 moment.locale('ru');
 
@@ -18,21 +18,21 @@ angular.module('Foodhub').component('sessionInfo', {
     $scope.timePattern = /^(([01]?[0-9])|(2[0-3])):[0-5][0-9]$/;
 
     this.validateTime = function(time) {
-      let regexp = /^(\d{1,2}):(\d{1,2})$/,
+      var regexp = /^(\d{1,2}):(\d{1,2})$/,
         timeParts = regexp.exec(time);
       if (timeParts) {
-        let hours = parseInt(timeParts[1], 10),
-          minutes = parseInt(timeParts[2], 10);
-        return (hours >= 0 && hours <= 23) && (minutes >= 0 && minutes <= 59);
+        var hours = parseInt(timeParts[1]),
+          minutes = parseInt(timeParts[2]);
+        return 0 <= hours && hours <= 23 && 0 <= minutes && minutes <= 59;
+      } else {
+        return false;
       }
-
-      return false;
     };
 
-    this.getNameOwner = function() {
-      if (this.session)
-        return this.session.owner.firstName + ' ' +this.session.owner.lastName;
-    };
+    this.getNameOwner = function () {
+      if(this.session)
+      return this.session.owner.firstName + ' ' +this.session.owner.lastName;
+    }
 
     this.getTotalPrice = function() {
       if (!this.session) return;
@@ -57,7 +57,7 @@ angular.module('Foodhub').component('sessionInfo', {
 
       this.sessionTime = this.session.deliveryTime ? this.session.deliveryTime : this.session.orderTime;
 
-      let index = this.shops.map(function(shop) { return shop.id; }).indexOf(this.session.shopId);
+      var index = this.shops.map(function(shop) { return shop.id; }).indexOf(this.session.shopId);
       if (index !== -1) {
         this.selectedShop = this.shops[index];
       } else {
@@ -84,8 +84,8 @@ angular.module('Foodhub').component('sessionInfo', {
       }
     };
 
-    this.updateSessionTime = function() {
-      let sessionParams = {
+    this.updateSessionTime = function (session) {
+      var sessionParams = {
           id: this.session.id,
           deliveryTime: this.session.deliveryTime && moment({hours: this.session.deliveryTime.split(':')[0], minutes: this.session.deliveryTime.split(':')[1]}).toDate()
       }
@@ -97,7 +97,7 @@ angular.module('Foodhub').component('sessionInfo', {
           $scope.showMessageSaved = false;
         }.bind(this),1000);
       });
-    };
+    }
 
     $scope.$on('initSessionInfo', function() {
       $timeout(function() { this.init() }.bind(this));

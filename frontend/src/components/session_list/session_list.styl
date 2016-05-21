@@ -1,19 +1,6 @@
 .session-list
   font-size: 14px
   color: $color_main_font
-  padding-top: 80px
-  
-  &--short-format
-    padding-top: 0
-
-    .session-list__row
-      padding-top: 20px
-      
-    .session-list__col_button
-      display: none
-      
-    .session-list__col_money
-      col-3()
 
   .session-list__title-block
     border-bottom: $border_separator
@@ -24,69 +11,54 @@
 
   .session-list__active + .session-list__active
       .session-list__title-block
-        display: none
+        display none
 
 
   .session-list__history + .session-list__history
       .session-list__title-block
-        display: none
+        display none
 
 
   .session-list__sent + .session-list__sent
       .session-list__title-block
-        display: none
+        display none
 
   &__history
     opacity: 0.7
-    .session-list__col_time
-      display: none
-    .session-list__col_desc
-      col-6()
-      
-    .time_info
-      &__label
-        opacity: 0
 
 
   &__row
     clearfix()
-    padding: 40px 0
-    border-bottom: 1px solid $color_main
-    
-  &__author-name
-    color: $color_main
+    padding: 20px 0
+    border-bottom: 1px solid $color_session_list_row_border
 
   &__col
+    padding: 10px
 
-    /*@media $desktop
+    @media $desktop
       padding: 10px 5px
 
     @media $tablet-max
       text-align: center
 
     @media $mobile-max
-      padding: 5px 5px*/
+      padding: 5px 5px
 
     &_service
-      col-2()
+      col-12()
       text-align: center
-      padding-top: 50px
 
-      /*@media $desktop-min
-        col-2()*/
+      @media $desktop-min
+        col-2()
+
     &_desc
-      col-4()
+      col-12()
 
-      /*@media $desktop-min
+      @media $desktop-min
         col-3()
 
       @media $mobile-max
-        display: none*/
-    &_money
-    &_time
-      padding: 0
-      padding-top: 30px
-      col-2()
+        display: none
 
     &_author
       @media $desktop-min
@@ -109,12 +81,11 @@
         col-12()
 
     &_button
-      col-2()
-      padding: 0
-      padding-top: 50px
+      col-12()
+      padding-top: 20px
 
-      /*@media $desktop-min
-        col-3()*/
+      @media $desktop-min
+        col-3()
 
       & .button
         display: block
@@ -129,7 +100,7 @@
   &__service-img
     vertical-align: middle
     max-height: 100px
-    max-width: 100px
+    max-width: 100%
 
     @media $tablet
       max-height: 70px
@@ -143,15 +114,15 @@
     display: block
 
   &__label
-    font-size: 12px
-    font-style: italic
     @media $mobile-max
       font-size: 15px
 
   &__title
-    color: #555
-    font-weight: 600
-    font-size: 18px
+    color: $color_main
+    font-weight: 500
+
+    @media $mobile-max
+      font-size: 15px
 
     &_dark
       color: $color_session_list_title_big
@@ -160,24 +131,3 @@
       display: block
       font-size: 20px
       color: $color_session_list_title_big
-
-
-.time_info
-  &__label
-  &__value
-    margin: 0
-    padding: 0
-    text-align: center
-    font-weight: 300
-  
-  &__label
-    color: #555
-    font-size: 11px
-    
-  &__value
-    font-weight: 800
-    color: $color_main_dark
-    font-size: 42px
-        
-
-

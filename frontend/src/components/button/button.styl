@@ -1,7 +1,7 @@
 .button
   display: inline-block
   padding: 9px 18px
-  border-radius: 1px
+  border-radius: 2px
   color: $color_session_info_text
   background-color: $color_main
   font-size: 14px
@@ -46,8 +46,8 @@
     font-size: 12px
     text-transform: none
     padding: 4px 10px
-
-  &.button_not_hover:hover
-    background-color: rgba($color_main, 0)
-    text-decoration: none
-    cursor: default
+    
+.button_not_hover:hover
+  background-color: rgba($color_main, 0) !important
+  text-decoration: none
+  cursor: default

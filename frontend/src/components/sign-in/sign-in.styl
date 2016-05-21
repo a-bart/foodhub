@@ -10,8 +10,18 @@
   height: 100%
   z-index: 5
   min-height: 480px
-  background: url('../img/bg2.jpg') no-repeat 50% 0
+  background: url('../img/sign_in_bg.jpg') no-repeat 50% 0
   background-size: cover
+
+  &__overlay
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: $color_main
+    opacity: .6
+    z-index: 1
 
   &__logo-container
   &__buttons-container
@@ -25,18 +35,21 @@
   &__logo
     display: block
     width: 100%
-    max-width: 300px
+    max-width: 260px
     margin: 0 auto 10px
 
   &__tagline
-    font-size: 12px
-    margin: 20px 0 0 0
-    max-width: 500px
+    font-size: 14px
+    margin: 0
     color: $color_sign_in
 
   &__buttons-container
     width: 100%
-    max-width: 250px
+    max-width: 380px
+    padding: 20px 20px 35px
+    background: $color_sign_in
+    border-radius: 2px
+    box-shadow: 0 3px 25px 0 rgba($color_sign_in_shadow, .49)
 
   &__title
     position: relative

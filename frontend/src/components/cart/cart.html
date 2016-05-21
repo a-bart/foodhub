@@ -1,11 +1,8 @@
 <div class="cart cart_open" ng-class="{ 'cart_fixed' : $ctrl.isFixed }">
   <button class="cart__open-button cart__open-button_hidden"></button>
-  <div class="cart__header">
-    <i class="cart__icon material-icons">shopping_cart</i>
-    <h3 class="cart__title">
-      Моя корзина (<b class="cart__total-price" ng-bind="$ctrl.getTotalPrice() | moneyFilter" ></b>)
-    </h3>
-  </div>
+  <h2 class="cart__header">
+    Мои товары <b class="cart__total-price" ng-bind="$ctrl.getTotalPrice() | moneyFilter" ></b>
+  </h2>
   <div class="cart__food-list">
     <div class="cart__food">
       <food-order
@@ -20,56 +17,21 @@
     </div>
   </div>
   <div class="cart__action-buttons">
-
-    
-    <div 
-      class="cart__new-session-container"
-      ng-class="{'cart__new-session-container--visible' : $ctrl.order.foodOrders.length && (!$ctrl.session.status && $ctrl.session.status != 0)}">
-      <div class="cart__new-session">
-        <text-input 
-          model="$ctrl.session.orderTime" 
-          placeholder="14:48" 
-          name="orderTime"
-          pattern="$ctrl.timePattern"
-          label="Я буду оформлять заказ в:" 
-          type="text">
-        </text-input>
-
-        <custom-button
-          is-stretch
-          ng-click="$ctrl.clickConfirmBtn()"
-          title="'Создать предложение'">
-        </custom-button>
-
-        <span class="cart__info-separator">или</span>
-      </div>
-
-
-      <div class="cart__cancel-button">
-        <custom-button
-          is-transparent
-          is-stretch
-          ng-click="$ctrl.clickCancelBtn()"
-          title="'оформить заказ прямо сейчас'">
-        </custom-button>
-      </div>
-    </div>
-
-    <div ng-show="$ctrl.session.status == 0" class="cart__confirm-button">
+    <div class="cart__confirm-button">
       <custom-button
         is-stretch
         ng-click="$ctrl.clickConfirmBtn()"
-        title="'Сохранить корзину'">
+        title="$ctrl.confirmText">
       </custom-button>
     </div>
 
-    <!--div class="cart__cancel-button">
+    <div class="cart__cancel-button">
       <custom-button
         is-transparent
         is-stretch
         ng-click="$ctrl.clickCancelBtn()"
         title="$ctrl.cancelText">
       </custom-button>
-    </div-->
+    </div>
   </div>
 </div>

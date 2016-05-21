@@ -6,12 +6,13 @@ angular.module('Foodhub')
       restrict: 'E',
       link: function($scope) {
         $scope.logout = function() {
+          console.log(Auth);
           Auth.logout().then(function() {
             $location.path('/sign_in');
           }).catch(function() {
             $location.path('/sign_in');
           });
-        };
+        }
       }
     };
   }]);

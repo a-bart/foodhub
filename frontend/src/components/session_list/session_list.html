@@ -1,5 +1,4 @@
-<div class="session-list" ng-class="{'session-list--short-format' : $ctrl.isShortView()}">
-
+<div class="session-list">
   <div
     class="session-list__row"
     ng-repeat="session in $ctrl.list | orderBy:'-status':1"
@@ -8,81 +7,15 @@
                'session-list__sent' : $ctrl.isSent(session.status)}"
     >
 
+    <h3 class="session-list__title-block" ng-show="$ctrl.isActive(session.status)">Активные предложения</h3>
+    <h3 class="session-list__title-block" ng-show="$ctrl.isSent(session.status)">Оформлены и ждут доставки</h3>
+    <h3 class="session-list__title-block" ng-show="$ctrl.isHistory(session.status)">Завершенные</h3>
+
     <div class="session-list__col session-list__col_service">
-      <a target="_blank" ng-href="{{session.deliveryUrl}}">
-        <img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}">
-      </a>
+      <a target="_blank" ng-href="{{session.deliveryUrl}}"><img class="session-list__service-img" alt="Логотип службы доставки" ng-src="{{session.image}}"></a>
     </div>
-
-
     <div class="session-list__col session-list__col_desc">
-      <h3 class="session-list__new-line session-list__title">
-        Автор предложения: <span class="session-list__author-name" ng-bind="session.authorName"></span>
-      </h3>
-
-      <div class="session-list__hide-on-mobile">
-        <div class="session-list__new-line">
-          <a target="_blank" ng-href="{{session.deliveryUrl}}" ng-bind="session.deliveryUrl"></a>
-        </div>
-        <div class="session-list__new-line">
-          <span class="session-list__label">Время работы: </span>
-          <span class="session-list__label session-list__title_dark" ng-bind="session.deliveryTimetable"></span>
-        </div>
-        <div class="session-list__new-line">
-          <span class="session-list__label">Минимальная сумма заказа: </span>
-          <span class="session-list__label session-list__title_dark" ng-bind="session.minimalDeliveryPrice"></span>
-        </div>
-        <div class="session-list__new-line">
-          <span class="session-list__label">Бесплатная доставка</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="session-list__col session-list__col_time" ng-show="session.orderTime && !session.deliveryTime">
-      <div class="time_info">
-        <h5 class="time_info__label">Оформление заказа произойдет в</h5>
-        <h3 class="time_info__value" ng-bind="session.orderTime">14:30</h3>
-        <h5 
-          ng-show="session.orderTimeLeft" 
-          class="time_info__label">ещё <span ng-bind="session.orderTimeLeft"></span>
-        </h5>
-      </div>
-    </div>
-
-    <div class="session-list__col session-list__col_time" ng-show="session.deliveryTime">
-      <div class="time_info">
-        <h5 class="time_info__label">Еда прибудет примерно в</h5>
-        <h3 class="time_info__value" ng-bind="session.deliveryTime">14:30</h3>
-        <h5 
-          ng-show="session.deliveryTimeLeft" 
-          class="time_info__label">ещё <span ng-bind="session.deliveryTimeLeft"></span>
-        </h5>
-      </div>
-    </div>
-
-
-    <div class="session-list__col session-list__col_money">
-      <div class="time_info">
-        <h5 class="time_info__label">До бесплатной доставки ещё</h5>
-        <h3 class="time_info__value" ng-bind="session.priceLeft | moneyFilter"></h3>
-        <h5 class="time_info__label">Уже собранно: <span ng-bind="session.totalPrice | moneyFilter"></span></h5>
-      </div>
-    </div>
-
-    <div class="session-list__col session-list__col_button">
-      <custom-button
-        href="'/#/session/' + session.id"
-        title="'Просмотр'">
-      </custom-button>
-    </div>
-
-
-
-    <!--div class="session-list__col session-list__col_desc">
-      <span class="session-list__new-line session-list__title">
-        <a target="_blank" ng-href="{{session.deliveryUrl}}" ng-bind="session.deliveryUrl"></a>
-      </span>
-
+      <span class="session-list__new-line session-list__title"><a target="_blank" ng-href="{{session.deliveryUrl}}" ng-bind="session.deliveryUrl"></a></span>
       <div class="session-list__hide-on-mobile">
         <div class="session-list__new-line">
           <span class="session-list__label">Время работы: </span>
@@ -97,9 +30,8 @@
         </div>
       </div>
     </div>
-
-
     <div class="session-list__col session-list__col_author" >
+
 
       <div class="session-list__new-line" >
         <span
@@ -149,6 +81,6 @@
         href="'/#/session/' + session.id"
         title="'Просмотр'">
       </custom-button>
-    </div-->
+    </div>
   </div>
 </div>

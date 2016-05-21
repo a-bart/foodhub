@@ -1,24 +1,10 @@
 .menu-tabs
   padding: 0
   height: 100%
-  
-  &--dark
-    margin-top: -45px
-
-    & .menu-tabs__content
-      border: 0
-
-    & .menu-tabs__label
-      &_active
-        color: #fff
-        border-bottom-color: #fff
-
-      &:hover
-        border-bottom-color: #fff
 
   &__content
     overflow: auto
-    border-top: 1px solid $color_main
+    border-top: $border_separator
     font-size: 14px
     
   &__arrow-left
@@ -27,7 +13,6 @@
     height: 100%
     position: absolute
     top:0
-
     &:hover:before
       opacity: 1
     
@@ -65,10 +50,10 @@
     
 
   &__arrow-left
-    left: 0
+    left:0
     
     &:before
-      left: 0
+      left:0
       background-image: embedurl('ic_keyboard_arrow_left_black_24dp_2x.png')
     
     &:after
@@ -88,14 +73,13 @@
     display: inline-block
     width: auto
     position: absolute
-    top: 0
+    top: 0px
     position: relative
     transition: left 0.2s
 
   &__label
     display: inline-block
-    margin: 0
-    margin-bottom: -1px
+    margin: 0 0 -1px 0
     padding: 15px 30px 12px 30px
     font-size: 14px
     font-weight: 500

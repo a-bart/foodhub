@@ -7,20 +7,18 @@ angular.module('Foodhub')
     $scope.sessionInfoTitle = 'Информация о заказе';
     $rootScope.pageTitle = $rootScope.projectConfig.nameProject + ' - Оформление заказа';
 
-    $scope.catchError = function(error) {
-      
-      if (error.status && error.data.message) {
-        $scope.errorMessage = 'Error: ' + error.status + ' ' + error.data.message;
+    $scope.catchError = function(error){
+      console.log(error)
+      if(error.status && error.data.message){
+        $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
       } else {
-        $scope.errorMessage = 'Error: ' + error;
+        $scope.errorMessage = "Error: " + error;
       }
       $scope.errorCaught = true;
-    };
+    }
     $scope.hideError = function() {
       $scope.errorCaught = false;
-    };
-
-    $scope.mappedSessions = [];
+    }
 
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
@@ -29,10 +27,8 @@ angular.module('Foodhub')
       }).then(function(session) {
         $scope.session = session;
         $scope.foodInfo = foodFromSession(session);
-
-        $scope.mappedSessions = [];
-        $scope.mappedSessions.push(Sessions.convertSessionToNormalFormat($scope.session, $scope.shops[0]));
-
+        $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
+        //$scope.session.deliveryTime = moment(new Date($scope.session.deliveryTime)).format('LT');
         $rootScope.$broadcast('initSessionInfo');
         return Users.getUser({id: session.owner.id});
       }).then(function(user) {
@@ -46,7 +42,7 @@ angular.module('Foodhub')
     };
 
     $scope.postOrder = function() {
-      // OrderPoster.PostOrder.then(function() {
+      //OrderPoster.PostOrder.then(function() {
       var posterParams = {
         id: $scope.session.id,
         user: $rootScope.currentUser

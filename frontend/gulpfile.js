@@ -49,7 +49,7 @@ var config = {
   server: {
     baseDir: './build'
   },
-  host: 'foodhub.com',
+  host: 'localhost',
   port: 9000,
   logPrefix: 'foodHub'
 };
