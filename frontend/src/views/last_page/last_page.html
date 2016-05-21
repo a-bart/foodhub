@@ -1,6 +1,8 @@
 <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
 </div>
-<session-info title="sessionInfoTitle" session="session" shops="shops"></session-info>
+<div class="main-content__column">
+  <session-list is-short list="mappedSessions"></session-list>
+</div>
 
 <div class="main-content__column">
   <div class="last-page">

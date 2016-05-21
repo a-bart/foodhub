@@ -11,6 +11,9 @@ angular.module('Foodhub')
     if (!$routeParams.id || isNaN(Number($routeParams.id))) {
       $location.path('/');
     }
+    $scope.isSessionCreator = Sessions.isSessionCreator;
+
+
     $scope.catchError = function(error){
       console.log(error)
       if(error.status && error.data.message){
@@ -20,16 +23,15 @@ angular.module('Foodhub')
       }
       $scope.errorCaught = true;
     }
+
     $scope.hideError = function() {
       $scope.errorCaught = false;
     }
-    $scope.isSessionCreator = function(session) {
-      if (!$rootScope.currentUser || !session) return false;
-      return $rootScope.currentUser.id === session.owner.id;
-    }
+    
     $scope.isOrdersEmpty = function(session) {
       return !session || session.orders.length === 0;
     }
+    
     $scope.isSessionParticipant = function(session) {
       if (!$rootScope.currentUser || !session) return false;
       var index = _.map(session.orders, function(order) { return order.owner.id }).indexOf($rootScope.currentUser.id);
@@ -43,10 +45,9 @@ angular.module('Foodhub')
 
     $scope.getJoinButtonLabel = function() {
       if (!$scope.session) return false;
-      if ($scope.isSessionCreator($scope.session)) {
-        return 'Редактировать сессию';
-      } else if ($scope.isSessionParticipant($scope.session)) {
-        return 'Редактировать заказ';
+
+      if ($scope.isSessionParticipant($scope.session) || Sessions.isSessionCreator($scope.session)) {
+        return 'Редактировать свой заказ';
       } else {
         return 'Присоединиться';
       }
@@ -86,14 +87,17 @@ angular.module('Foodhub')
       }).catch($scope.catchError);
     }
 
+    $scope.mappedSessions = [];
+
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
         $scope.shops = shops;
         return Sessions.getSession({ id: $routeParams.id });
       }).then(function(session) {
         $scope.session = session;
-        $scope.session.orderTime = moment(new Date($scope.session.orderTime)).format('LT');
-        $scope.session.deliveryTime = $scope.session.deliveryTime ? moment(new Date($scope.session.deliveryTime)).format('LT') : null;
+        $scope.mappedSessions = [];
+        $scope.mappedSessions.push(Sessions.convertSessionToNormalFormat($scope.session, $scope.shops[0]))
+
         $rootScope.$broadcast('initSessionInfo');
       }).catch($scope.catchError);
     };

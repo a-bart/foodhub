@@ -1,17 +1,63 @@
 .cart
-  min-width: 350px
-  background: $color_primary_bg
-  padding: 15px
-  transform: translateX(100%)
-  card()
-  border-top-left-radius: 0
+  min-width: 320px
+  height: 100%
+  overflow-x: hidden
+  padding: 0
+  padding-bottom: 105px 
+  box-shadow: -1px 0 0 $color_main
   transition: transform 0.5s ease
+  
+  &__info-separator
+    display: block
+    width: 35px
+    height: 35px
+    position: absolute
+    bottom: -15px
+    left: 50%
+    border-radius: 35px
+    line-height: 32px
+    text-align: center
+    font-family: serif
+    font-style: italic
+    font-weight: 600
+    font-size: 13px
+    color: darken($color_main, 20%)
+    border: 1px solid $color_main
+    background-color: white
+    transform: translate(-50%, 0)
+  
+  //cart__new-session-container--hidden
+    
+  &__new-session
+    padding: 15px 0 45px 0
+    position: relative
+    margin-bottom: 30px
+    
+    
+    &:after
+    &:before
+      content: ''
+      display: block
+      border-top: 1px solid $color_main
+      width: 150%
+      position: absolute
+      left: -15px
+      
+    &:after
+      top: 0
+      
+    &:before
+      bottom: 0
+      
+
 
   &_fixed
     position: fixed
     right: 0
-    top: 15px
-    z-index: 20
+    top: 0
+    padding-top: $header_height
+    padding-top: 0px
+    z-index: 2
 
   @media $mobile-max
     width: 100%
@@ -39,12 +85,29 @@
 
     &:hover
       background-color: $color_button_primary_hover
-
-  &__header
-    color: $color_main_font
-    width: 100%
-    text-align: center
+      
+  &__icon.material-icons
+    display: block
+    color: #555
+    font-size: 32px
+    float: left
+    padding-right: 10px
+    padding-top: 0px
     margin-top: 10px
+    
+  &__title
+    color: #222
+    text-align: left
+    font-size: 18px
+    padding-top: 0px
+    
+    
+    
+  &__header
+    width: 100%
+    margin-top: 10px
+    padding: 15px
+   
 
     @media $desktop-min
       text-align: left
@@ -57,7 +120,9 @@
     font-weight: 500
 
   &__food-list
-    max-height: calc(100vh - 210px)
+    padding: 15px
+    padding-right: 10px
+    max-height: calc(100vh - 320px)
     overflow-y: auto
 
     @media $mobile-max
@@ -83,3 +148,25 @@
     @media $mobile-max
       transform: translateX(0)
       border-radius: 2px
+
+
+
+
+
+
+
+.cart__new-session-container
+  position: absolute
+  bottom: 0
+  left: 150%
+  width: 100%;
+  background-color: white
+  padding: 0 15px
+  padding-bottom: 20px
+  //background-color: $color_main_dark
+  //box-shadow: 15px 0 0 0 $color_main_dark,-15px 0 0 0 $color_main_dark;
+
+.cart__new-session-container--visible
+  transition: left 0.1s ease 0.6s
+  position: absolute
+  left: 0px

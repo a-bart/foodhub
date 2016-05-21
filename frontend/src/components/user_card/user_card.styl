@@ -5,11 +5,12 @@
   background-color: white
   transition: box-shadow .15s
 
-  &_editable &__close
-    display: block
-    
-  &_editable &__footer
-    display: block
+  &_editable
+    &__close
+      display: block
+
+    &__footer
+      display: block
   
   &:hover
     card_hover()

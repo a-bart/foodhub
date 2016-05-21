@@ -2,8 +2,7 @@
   min-height: 70px
   height: auto
   overflow: hidden
-  padding: 10px 0 10px 50px
-  border-bottom: $border_separator
+  padding: 15px 0 15px 50px
   position: relative
 
   &.food-order_editable &__close
@@ -11,12 +10,16 @@
     
   &__counter
     font-size: 11px
+  
+  &:hover .food-order__close
+    opacity: 1
 
   &__close
+    opacity: 0
     position: absolute
     display: none
     right: 0
-    top: 10px
+    top: 18px
     font-style: normal
     cursor: pointer
 
@@ -25,6 +28,7 @@
     width: 43px
     position: absolute
     left: 0
+    margin-top: 5px
     overflow: hidden
     border-radius: 50%
 
@@ -43,6 +47,9 @@
     padding-right: 15px
     margin-top: 0
     margin-bottom: 5px
+    max-width: 200px
+    overflow: hidden
+    height: 14px
 
   &__quantity
     overflow: hidden
@@ -56,13 +63,14 @@
     &:after
       content: 'x'
       position: absolute
-      right: -15px
+      right: -10px
       color: $color_food_order_seaprator
 
   &__quantity-input-container
     display: inline-block
     position: relative
-    margin: 0 25px
+    margin: 0
+    margin-left: 15px
     float: left
     
     &:after
@@ -79,4 +87,4 @@
     color: $color_main
     font-weight: 500
     font-size: 16px
-    padding-top: 4px
+    padding-top: 1px

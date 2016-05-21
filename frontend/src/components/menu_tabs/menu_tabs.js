@@ -4,6 +4,9 @@ angular.module('Foodhub')
       restrict: 'AE',
       transclude: true,
       template: require('./menu_tabs.html'),
+      scope:{
+        isDark: '@',
+      },
       replace: true,
       controller: ['$scope', function($scope) {
         var panes = $scope.currentPanes = [];
@@ -24,6 +27,10 @@ angular.module('Foodhub')
           if(widthFullContent - Math.abs(leftPosition) >= widthBlock) return true;
           return false;
         }
+
+        $scope.isDarkTabs = function() {
+          return ( typeof( $scope.isDark)  !== 'undefined');
+        };
 
 
         $scope.leftPosition = 0;
@@ -57,6 +64,7 @@ angular.module('Foodhub')
       },
       link: function(scope, element, attrs, tabsCtrl) {
         tabsCtrl.addPane(scope);
+
       }
     };
   });

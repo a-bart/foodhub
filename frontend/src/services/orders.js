@@ -16,7 +16,21 @@ angular.module('Foodhub')
       }
     });
 
+    var helpers = {};
+    helpers.findOrderIndexByFoodId = function (foodOrders, FoodId) {
+      let OrderIndex = -1;
+      foodOrders.forEach(function (item, i) {
+        if (item.food.id == FoodId) {
+          OrderIndex = i;
+        }
+      });
+      return OrderIndex;
+    }
+
+
     return {
+      findOrderIndexByFoodId : helpers.findOrderIndexByFoodId,
+      
       updateOrder: function(params) {
         return resource.update(params).$promise;
       },
