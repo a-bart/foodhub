@@ -1,15 +1,38 @@
-<div class="main-content__column">
-  <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
-  </div>
-  <div class="session-list-page">
-    <div class="session-list-page__header">
-      <h1 class="session-list-page__header-title">Список предложений</h1>
-      <div class="session-list-page__header-button">
-        <a href="/#/food/new" class="button">Добавить новое предложение</a>
-      </div>
-    </div>
-    <div class="session-list-page__content">
-      <session-list list="mappedSessions"></session-list>
-    </div>
-  </div>
+<div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
 </div>
+
+<div class="session-list-page">
+  <div class="sub-header">
+	  <div class="main-content__column sub-header__content">
+	    <h1 class="sub-header__title">Список предложений</h1>
+
+	    <div class="fab-button">
+	      <a href="/#/food/new" class="fab-button__link">+</a>
+	      <span class="fab-button__label">Добавить новое предложение</span>
+	    </div>
+
+	  </div>
+	</div>
+
+	<menu-tabs is-dark>
+	  <menu-pane title="Ждут пользователей">
+		  <div class="session-list-page__content">
+		    <session-list list="mappedSessionsActive"></session-list>
+		  </div>
+	  </menu-pane>
+
+	  <menu-pane title="Ждут доставки">
+	  	<div class="session-list-page__content">
+		    <session-list list="mappedSessionsWait"></session-list>
+		  </div>
+	  </menu-pane>
+
+	  <menu-pane title="Завершенные">
+	  	<div class="session-list-page__content">
+		    <session-list list="mappedSessionsLast"></session-list>
+		  </div>
+	  </menu-pane>
+	</menu-tabs>
+
+</div>
+

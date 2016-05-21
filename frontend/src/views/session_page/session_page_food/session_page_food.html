@@ -1,35 +1,97 @@
 <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
 </div>
-<session-info
-  title="sessionInfoTitle"
-  session="session"
-  shops="shops"
-  can-change-time="session.status != 2 && isSessionCreator(session)"
-  can-change-shop="isNewSession">
-</session-info>
 
-<div class="main-content__column">
+
   <div class="session-page">
+    <div class="session-page__col-big">
+
+      <div class="session__info" ng-show="!isNewSession">
+        <session-list is-short list="mappedSessions"></session-list>
+      </div>
+
+      <div class="session__new" ng-show="isNewSession">
+        <table class="choose-shop">
+          <thead>
+            <tr>
+              <td></td>
+              <td 
+                ng-repeat="shop in shops">
+                <div ng-class="{'choose-shop__selected': selectedShop.id == shop.id}">
+                  <img ng-src="{{shop.logoUrl}}" alt="">
+                </div>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Время работы</td>
+              <td ng-repeat="shop in shops" ng-bind="shop.deliveryTime"></td>
+            </tr>
+
+            <tr>
+              <td>Минимальный заказ</td>
+              <td ng-repeat="shop in shops" ng-bind="shop.minOrderPrice"></td>
+            </tr>
+
+
+            <tr>
+              <td>Доставка</td>
+              <td ng-repeat="shop in shops" ng-bind="shop.deliveryPrice"></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td ng-repeat="shop in shops">
+                <custom-button 
+                  is-stretch
+                  ng-show="selectedShop.id != shop.id"
+                  on-click="changeSelectedShop(shop.id)"
+                  title="'Выбрать'">
+                </custom-button>
+
+                <h3 class="choose-shop__check" ng-show="selectedShop.id == shop.id">
+                  Выбранно <i class="material-icons choose-shop__check-icon">check</i>
+                </h3>
+
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="session-page__header">
+        <h2 class="session-page__header-title">Список товаров для заказа</h2>
+      </div>
+      <menu-tabs>
+        <menu-pane 
+          class="session-page__category" 
+          ng-repeat="category in selectedShop.categories track by $index" title="{{category.name}}">
+
+          <product-card 
+            class="session-page__participants-order" 
+            ng-repeat="food in category.foods track by $index" 
+            food="food" 
+            on-add="addFoodToCart">
+          </product-card>
+
+        </menu-pane>
+      </menu-tabs>
+    </div>
+
+
     <div class="session-page__col-small">
-      <cart is-fixed="false" on-confirm="saveOrder" order="order"></cart>
+      <cart
+        is-fixed="true"
+        on-confirm="saveOrder"
+        session="session"
+        order="order">
+      </cart>
+
       <div
         class="error-message session-page__empty-order-message"
         ng-show="emptyOrderMessageShow"
         ng-bind="emptyOrderMessage">
       </div>
     </div>
-
-    <div class="session-page__col-big">
-      <div class="session-page__header">
-        <h2 class="session-page__header-title">Список товаров для заказа</h2>
-      </div>
-      <menu-tabs>
-        <menu-pane class="session-page__category" ng-repeat="category in selectedShop.categories track by $index" title="{{category.name}}">
-          <product-card class="session-page__participants-order" ng-repeat="food in category.foods track by $index" food="food" on-add="addFoodToCart"></product-card>
-        </menu-pane>
-      </menu-tabs>
-    </div>
-
-    
-  
-</div>

@@ -15,6 +15,7 @@ parsers.forEach((item) => {
   build(item.name, item.parser);
 });
 
+
 function build(name, parser) {
   var shopPromise = models.Shop.findOne({where: {name: name}});
   var productsPromise = parser.getProducts();

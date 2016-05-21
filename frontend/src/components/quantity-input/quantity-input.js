@@ -7,7 +7,6 @@ angular.module('Foodhub')
       require: '?ngModel',
       scope: {},
       link: function($scope, $element, $attrs, ngModel) {
-
         $scope.increaseCount = function() {
           $scope.foodCounter += 1;
           ngModel.$setViewValue($scope.foodCounter);
@@ -21,7 +20,7 @@ angular.module('Foodhub')
         };
 
         ngModel.$render = function() {
-          $scope.foodCounter = typeof(ngModel.$modelValue) == 'number' && ngModel.$modelValue || 0;
+          $scope.foodCounter = typeof(ngModel.$modelValue) === 'number' && ngModel.$modelValue || 0;
         };
       }
     };

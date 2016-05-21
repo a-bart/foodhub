@@ -1,5 +1,5 @@
-const angular = require('angular');
-const templateHtml = require('./food_order.html');
+let angular = require('angular');
+let templateHtml = require('./food_order.html');
 
 angular.module('Foodhub').component('foodOrder', {
   bindings: {

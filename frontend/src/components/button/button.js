@@ -5,17 +5,16 @@ angular.module('Foodhub').component('customButton', {
     'title': '<',
     'href': '<',
     'isBlank': '@',
-    'isStretch' : '@',
-    'isSmall' : '@',
-    'isNotHover' : '@',
+    'isStretch': '@',
+    'isSmall': '@',
+    'isNotHover': '@',
     'isTransparent': '@',
-    'onClick' : '&',
+    'onClick': '&',
   },
 
   template: require('./button.html'),
 
   controller: function() {
-
     this.isTransparentBtn = function() {
       return ( typeof(  this.isTransparent)  !== 'undefined');
     };

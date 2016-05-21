@@ -32,6 +32,6 @@ angular.module('Foodhub').component('userCard', {
     this.foodOrderEdited = function() {
       if (!this.order) return;
       this.onEdit()(this.order);
-    }
+    };
   },
 });

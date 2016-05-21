@@ -13,7 +13,7 @@ module.exports = {
         delivery_price: null,
         min_order_price: 120000,
         min_free_delivery_price: null,
-        delivery_time: "вс-чт — с 10 до 22 часов, пт-сб — до 2 ночи, завтраки: 10:00 - 12:00, обеденные комплексы: 12:00 - 16:00.",
+        delivery_time: "11:00 - 23:00",
         created_at: now,
         updated_at: now
       }, {
@@ -25,7 +25,7 @@ module.exports = {
         delivery_price: null,
         min_order_price: 100000,
         min_free_delivery_price: null,
-        delivery_time: "24 часа в сутки и 7 дней в неделю!",
+        delivery_time: "00:00 - 24:00",
         created_at: now,
         updated_at: now
       }, {
@@ -37,7 +37,7 @@ module.exports = {
         delivery_price: null,
         min_order_price: 180000,
         min_free_delivery_price: null,
-        delivery_time: "с 11:00 до 22:30",
+        delivery_time: "11:00 - 22:30",
         created_at: now,
         updated_at: now
       }, {
@@ -49,7 +49,7 @@ module.exports = {
         delivery_price: 20000,
         min_order_price: null,
         min_free_delivery_price: 100000,
-        delivery_time: "Воскресенье – четверг с 9.00 до 03.00, пятница-суббота – круглосуточно.",
+        delivery_time: "14:00 - 24:00",
         created_at: now,
         updated_at: now
       }

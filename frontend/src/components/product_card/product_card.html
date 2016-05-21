@@ -5,11 +5,19 @@
     <div class="product-card__image-container">
       <img class="product-card__image" alt="" ng-src="{{ $ctrl.food.imageUrl }}" >
     </div>
-    <h3 class="product-card__info product-card__name" ng-bind="$ctrl.food.name"></h3>
     <h3 class="product-card__info product-card__description" ng-bind="$ctrl.food.description"></h3>
   </div>
 
+
   <div class="product-card__body">
+    <div class="product-card__text_contaner">
+      <h3 class="product-card__name" ng-bind="$ctrl.food.name"></h3>
+      <h4 class="product-card__price" ng-bind="$ctrl.food.price | moneyFilter"></h4>
+    </div>
+  </div>
+
+
+  <!--div class="product-card__body">
     <div class="product-card__half">
       <span class="product-card__label">Количество:</span>
       <quantity-input ng-model="$ctrl.quantity"></quantity-input>
@@ -19,14 +27,26 @@
       <span class="product-card__label">Цена за порцию:</span>
       <h4 class="product-card__price" ng-bind="$ctrl.food.price | moneyFilter"></h4>
     </div>
-  </div>
+  </div-->
 
   <div class="product-card__footer">
-    <custom-button 
-      is-transparent
-      on-click="$ctrl.clickAddBtn()"
-      title="'Добавить в корзину'">
-    </custom-button>
+    <div class="counter">
+      <a class="counter__up" ng-click="$ctrl.increaseCount()">
+        <i class="material-icons">keyboard_arrow_up</i>
+      </a>
+
+      <span class="counter__value" ng-bind="$ctrl.quantity"></span>
+
+      <a class="counter__down" ng-click="$ctrl.decreaseCount()">
+        <i class="material-icons">keyboard_arrow_down</i>
+      </a>
+    </div>
+
+
+    <h4 class="product-card__price" ng-bind="$ctrl.food.price | moneyFilter"></h4>
+    <a class="product-card__cart" ng-click="$ctrl.clickAddBtn()">
+      <i class="product-card__cart-icon material-icons">shopping_cart</i>
+    </a>
   </div>
 
 </div>

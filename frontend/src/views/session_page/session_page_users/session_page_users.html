@@ -1,16 +1,14 @@
 <div class="server-error-message" ng-show="errorCaught" ng-click="hideError()" ng-bind="errorMessage">
 </div>
-<session-info
-  title="sessionInfoTitle"
-  session="session"
-  can-change-time="session.status == 1 && isSessionCreator(session)"
-  can-change-shop="false"
-  shops="shops">
-</session-info>
-
 <div class="main-content__column">
   <div class="session-page">
     <div class="session-page__col-full">
+
+      <div class="session__info">
+        <session-list is-short list="mappedSessions"></session-list>
+      </div>
+
+
       <div class="session-page__header">
         <h2 class="session-page__header-title">Список людей принявших предложение</h2>
         <div class="session-page__button">
