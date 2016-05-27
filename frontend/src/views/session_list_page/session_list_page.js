@@ -27,6 +27,7 @@ angular.module('Foodhub')
           deliveryTimetable: shop.deliveryTime,
           minimalDeliveryPrice: shop.minOrderPrice,
           authorName: session.owner.firstName + ' ' + session.owner.lastName,
+          orderDate: new Date(session.orderTime),
           orderTime: moment(new Date(session.orderTime)).format('LT'),
           deliveryTime: session.deliveryTime ? moment(new Date(session.deliveryTime)).format('LT') : null,
           orderTimeLeft: session.deliveryTime ? $scope.timeFromNow(new Date(session.orderTime)) : $scope.timeFromNow(new Date(session.orderTime)),
@@ -35,10 +36,12 @@ angular.module('Foodhub')
         };
       });
     };
+
     $scope.hideError = function() {
       $scope.errorCaught = false;
       console.log($scope.errorCaught);
-    }
+    };
+
     $scope.init = function() {
       $rootScope.getShops().then(function(shops) {
         $scope.shops = shops;
@@ -46,6 +49,33 @@ angular.module('Foodhub')
       }).then(function(response) {
         $scope.sessions = response.sessions;
         $scope.mappedSessions = $scope.getSessions();
+
+        $scope.mappedSessionsActive = [];
+        $scope.mappedSessionsSent = [];
+        $scope.mappedSessionsSentToday = [];
+        $scope.mappedSessionsClosed = [];
+
+        $scope.mappedSessions.forEach(function(session) {
+          if (session.status === 0) {
+            $scope.mappedSessionsActive.push(session);
+          }
+          else if (session.status === 1) {
+            $scope.mappedSessionsSent.push(session);
+          }
+          else if (session.status === 2) {
+            $scope.mappedSessionsClosed.push(session);
+          }
+        });
+
+        $scope.mappedSessionsActive.forEach(function(session) {
+          var today = moment();
+          var yesterday = moment(today).subtract(1, 'day');
+          console.log(yesterday);
+          if (session.orderDate > yesterday) {
+            $scope.mappedSessionsSentToday.push(session);
+          }
+        });
+        console.log($scope.mappedSessionsSentToday);
       }).catch(function(error){
         if(error.status && error.data.message){
           $scope.errorMessage = "Error: " + error.status + ' ' + error.data.message;
@@ -55,6 +85,8 @@ angular.module('Foodhub')
         $scope.errorCaught = true;
       });
     };
+
+
 
     $scope.init();
   }]);

@@ -8,8 +8,25 @@
         <a href="/#/food/new" class="button">Добавить новое предложение</a>
       </div>
     </div>
-    <div class="session-list-page__content">
-      <session-list list="mappedSessions"></session-list>
+    <div class="session-list-page__counter">
+      <h3 class="session-list-page__counter_counter-box">Заказов оформлено за сутки: <span class="session-list-page__counter_counter-box_number" ng-bind="mappedSessionsSentToday.length"></span></h3>
     </div>
+    <menu-tabs>
+      <menu-pane title="Активные ({{mappedSessionsActive.length}})">
+        <div class="session-list-page__content">
+          <session-list list="mappedSessionsActive"></session-list>
+        </div>
+      </menu-pane>
+      <menu-pane title="Оформленные ({{mappedSessionsSent.length}})">
+        <div class="session-list-page__content">
+          <session-list list="mappedSessionsSent"></session-list>
+        </div>
+      </menu-pane>
+      <menu-pane title="Завершенные ({{mappedSessionsClosed.length}})">
+        <div class="session-list-page__content">
+          <session-list list="mappedSessionsClosed"></session-list>
+        </div>
+      </menu-pane>
+    </menu-tabs>
   </div>
 </div>
